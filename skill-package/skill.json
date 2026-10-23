@@ -1,0 +1,40 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "name": "CodeShip Builder",
+          "summary": "Build web app plans by voice using Alexa and Amazon Bedrock",
+          "description": "CodeShip is a voice-first app builder prototype. Say 'build hostel management system' to create a project plan using Amazon Bedrock when configured. GitHub publishing and deployment require connected credentials.",
+          "examplePhrases": [
+            "Alexa open code ship",
+            "build hostel management system",
+            "build expense tracker",
+            "deploy it"
+          ],
+          "keywords": [
+            "code",
+            "builder",
+            "github",
+            "deploy",
+            "bedrock",
+            "voice"
+          ]
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Enable the skill in the Alexa Developer Console test tab. Say 'open code ship' then 'build hostel management system'. Configure the Lambda ARN and BEDROCK_MODEL_ID first.",
+      "category": "PRODUCTIVITY",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:YOUR_AWS_ACCOUNT_ID:function:codeship"
+        },
+        "interfaces": []
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}

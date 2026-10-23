@@ -1,0 +1,13 @@
+{
+  "name": "codeship-alexa-builder",
+  "version": "1.0.0",
+  "description": "CodeShip Alexa custom skill with optional Bedrock project planning",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ask-sdk-core": "^2.14.0",
+    "@aws-sdk/client-bedrock-runtime": "^3.600.0"
+  }
+}

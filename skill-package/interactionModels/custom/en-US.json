@@ -1,0 +1,49 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "code ship",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "BuildAppIntent",
+          "slots": [
+            {
+              "name": "projectType",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "build {projectType}",
+            "create {projectType}",
+            "build me a {projectType}",
+            "make {projectType}",
+            "create an app for {projectType}"
+          ]
+        },
+        {
+          "name": "DeployIntent",
+          "slots": [],
+          "samples": [
+            "deploy",
+            "deploy it",
+            "make it live",
+            "deploy now",
+            "go live"
+          ]
+        }
+      ],
+      "types": []
+    }
+  }
+}
