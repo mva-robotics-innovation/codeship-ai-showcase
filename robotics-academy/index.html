@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101b33">
+  <title>RoboAcademy | Learning Operations</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#dashboard" aria-label="RoboAcademy home"><span class="brand-mark">R</span><span>RoboAcademy<small>LEARNING OPERATIONS</small></span></a>
+      <p class="nav-label">WORKSPACE</p>
+      <nav aria-label="Main navigation">
+        <button class="nav-link active" data-view="dashboard"><span>◫</span> Overview</button>
+        <button class="nav-link" data-view="students"><span>♙</span> Students</button>
+        <button class="nav-link" data-view="courses"><span>▦</span> Courses</button>
+        <button class="nav-link" data-view="projects"><span>⌘</span> Projects</button>
+      </nav>
+      <div class="sidebar-bottom"><span class="status-dot"></span> Demo workspace <small>Local browser data</small></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><p class="eyebrow">ROBOTICS EDUCATION / WORKSPACE</p><h1 id="pageTitle">Overview</h1></div>
+        <div class="profile"><span class="avatar">AD</span><span><strong>Academy Admin</strong><small>Demo account</small></span></div>
+      </header>
+
+      <section class="view active" id="view-dashboard" aria-labelledby="pageTitle">
+        <div class="welcome">
+          <div><p class="eyebrow light">ACADEMY CONTROL CENTER</p><h2>Build the next generation.</h2><p>Track learning, courses, and student-built robotics projects in one place.</p></div>
+          <div class="welcome-art" aria-hidden="true"><span>◉</span><i></i><b></b></div>
+        </div>
+        <div class="metric-grid">
+          <article class="metric"><span class="metric-icon violet">♙</span><p>Registered students</p><strong id="studentMetric">0</strong><small><span class="trend">●</span> Demo records</small></article>
+          <article class="metric"><span class="metric-icon blue">▦</span><p>Available courses</p><strong id="courseMetric">0</strong><small>Hands-on learning paths</small></article>
+          <article class="metric"><span class="metric-icon green">⌘</span><p>Active projects</p><strong id="projectMetric">0</strong><small>Student team builds</small></article>
+          <article class="metric"><span class="metric-icon orange">✓</span><p>Projects completed</p><strong id="completeMetric">0%</strong><small>Based on demo project status</small></article>
+        </div>
+        <div class="content-grid">
+          <article class="card"><div class="card-heading"><div><p class="eyebrow">LEARNING PATHS</p><h3>Featured courses</h3></div><button class="text-button" data-goto="courses">View all →</button></div><div id="dashboardCourses" class="course-list"></div></article>
+          <article class="card"><div class="card-heading"><div><p class="eyebrow">STUDENT BUILDS</p><h3>Project activity</h3></div><button class="text-button" data-goto="projects">View all →</button></div><div id="dashboardProjects" class="activity-list"></div></article>
+        </div>
+        <p class="demo-note"><strong>Demo mode:</strong> all records are sample data stored in this browser only. This is not a production multi-user service.</p>
+      </section>
+
+      <section class="view" id="view-students" aria-labelledby="studentsTitle">
+        <div class="section-intro"><div><p class="eyebrow">PEOPLE & ENROLLMENT</p><h2 id="studentsTitle">Student directory</h2><p>Manage student records for your academy demo.</p></div></div>
+        <div class="card">
+          <form id="studentForm" class="form-grid">
+            <label>Student name<input name="name" maxlength="80" placeholder="e.g. Aanya Sharma" required></label>
+            <label>Email address<input name="email" type="email" maxlength="120" placeholder="student@example.com" required></label>
+            <label>Learning track<select name="track"><option>Robotics Fundamentals</option><option>AI & Computer Vision</option><option>Drone Engineering</option><option>Embedded Systems</option></select></label>
+            <button class="primary-button" type="submit">+ Add student</button>
+          </form>
+        </div>
+        <div class="card table-card"><div class="card-heading"><div><p class="eyebrow">ACADEMY RECORDS</p><h3>All students <span id="studentCount" class="count-pill">0</span></h3></div><input id="studentSearch" class="search" type="search" placeholder="Search students" aria-label="Search students"></div>
+          <div class="table-wrap"><table><thead><tr><th>Student</th><th>Learning track</th><th>Joined</th><th>Action</th></tr></thead><tbody id="studentRows"></tbody></table></div><p id="studentEmpty" class="empty-state" hidden>No students match your search. Add a student above to get started.</p>
+        </div>
+      </section>
+
+      <section class="view" id="view-courses" aria-labelledby="coursesTitle">
+        <div class="section-intro"><div><p class="eyebrow">CURRICULUM</p><h2 id="coursesTitle">Robotics courses</h2><p>Explore course tracks and toggle demo enrollment.</p></div></div>
+        <div id="courseGrid" class="course-grid"></div>
+        <p class="demo-note">Enrollment changes are saved in this browser for demonstration. No emails or external services are contacted.</p>
+      </section>
+
+      <section class="view" id="view-projects" aria-labelledby="projectsTitle">
+        <div class="section-intro"><div><p class="eyebrow">BUILD & EXPERIMENT</p><h2 id="projectsTitle">Project tracker</h2><p>Organize team builds and move them through the workflow.</p></div></div>
+        <div class="card">
+          <form id="projectForm" class="form-grid project-form">
+            <label>Project name<input name="name" maxlength="100" placeholder="e.g. Line-following robot" required></label>
+            <label>Team / owner<input name="owner" maxlength="80" placeholder="e.g. Robotics Team A" required></label>
+            <label>Status<select name="status"><option>Planning</option><option>In progress</option><option>Completed</option></select></label>
+            <button class="primary-button" type="submit">+ Add project</button>
+          </form>
+        </div>
+        <div id="projectGrid" class="project-grid"></div>
+      </section>
+
+      <footer class="footer"><span>RoboAcademy · CodeShip template mode</span><span>Sample data · Not connected to a backend</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
