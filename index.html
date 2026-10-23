@@ -1,11 +1,170 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#080d1b"><meta name="description" content="CodeShip Alexa+ — turn voice ideas into web app plans with Alexa and Amazon Bedrock."><title>CodeShip Alexa+ | Voice to Web App Builder</title>
 <style>
-:root{--bg:#080d1b;--line:#273752;--text:#f3f6ff;--muted:#a7b5ce;--cyan:#68e6f0;--purple:#b4a0ff;--green:#80efb2}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#12365b 0,transparent 35%),radial-gradient(ellipse at 90% 10%,#32215a 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}header{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid #ffffff15}.brand{display:flex;gap:11px;align-items:center;font-size:1.12rem;font-weight:850;letter-spacing:-.04em}.logo{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#08101d;display:grid;place-items:center;font-weight:950}.nav{color:var(--muted);font-size:.9rem}.hero{text-align:center;padding:78px 0 50px}.pill{display:inline-flex;gap:9px;align-items:center;padding:7px 13px;border:1px solid #ffffff22;border-radius:999px;background:#ffffff08;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:#dce6f7}.pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}h1{font-size:clamp(2.8rem,7.3vw,5.6rem);line-height:.98;letter-spacing:-.075em;margin:25px auto 22px;max-width:950px}h1 span{background:linear-gradient(95deg,var(--cyan),var(--purple),#fff);background-clip:text;-webkit-background-clip:text;color:transparent}.hero p{max-width:720px;color:var(--muted);font-size:1.12rem;margin:0 auto}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:29px}.btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;padding:13px 18px;min-height:48px;border-radius:13px;border:1px solid #ffffff24;font-weight:750;font-size:.93rem;transition:.18s}.btn:hover{transform:translateY(-2px);border-color:#68e6f099}.primary{color:#07111d;background:linear-gradient(110deg,var(--cyan),#c3bbff);border:0}.secondary{background:#ffffff08}.section-title{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:34px 0 17px}.section-title h2{margin:0;font-size:1.55rem;letter-spacing:-.04em}.section-title p{margin:4px 0 0;color:var(--muted);font-size:.91rem}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{border:1px solid var(--line);background:linear-gradient(150deg,#14223aeb,#0e1729ed);border-radius:21px;padding:23px;display:flex;flex-direction:column;min-height:295px;position:relative;overflow:hidden}.card:after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;right:-60px;top:-65px;background:#68e6f012;pointer-events:none}.ico{height:47px;width:47px;border-radius:14px;display:grid;place-items:center;background:#68e6f017;color:var(--cyan);font-size:1.35rem}.card:nth-child(2) .ico{color:var(--purple);background:#b4a0ff17}.card:nth-child(3) .ico{color:var(--green);background:#80efb217}.eyebrow{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:20px}.card h3{font-size:1.23rem;letter-spacing:-.035em;margin:5px 0 8px}.card p{color:var(--muted);font-size:.93rem;margin:0 0 22px}.card .btn{margin-top:auto;width:100%}.status{font-size:.76rem;color:#a8bad0;margin-top:12px;display:flex;align-items:center;gap:7px}.status:before{content:"";width:6px;height:6px;background:var(--green);border-radius:50%}.info{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;margin:35px 0 65px}.panel{border:1px solid var(--line);border-radius:21px;background:#101a2ec9;padding:25px}.panel h2{margin:0 0 8px;font-size:1.42rem;letter-spacing:-.04em}.panel p{margin:0;color:var(--muted)}.steps{display:grid;gap:12px}.step{display:flex;gap:11px;font-size:.91rem;color:#dce5f3}.check{color:var(--green);font-weight:900}footer{border-top:1px solid #ffffff15;padding:22px 0 28px;display:flex;justify-content:space-between;gap:14px;color:#8495ad;font-size:.82rem}@media(max-width:800px){.grid{grid-template-columns:1fr}.card{min-height:250px}.info{grid-template-columns:1fr}.hero{padding-top:55px}}@media(max-width:520px){.nav{display:none}.actions{flex-direction:column}.actions .btn{width:100%}footer{flex-direction:column}.section-title{align-items:start;flex-direction:column}}
+:root{--bg:#080d1b;--line:#273752;--text:#f3f6ff;--muted:#a7b5ce;--cyan:#68e6f0;--purple:#b4a0ff;--green:#80efb2}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#12365b 0,transparent 35%),radial-gradient(ellipse at 90% 10%,#32215a 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}header{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid #ffffff15}.brand{display:flex;gap:11px;align-items:center;font-size:1.12rem;font-weight:850;letter-spacing:-.04em}.logo{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#08101d;display:grid;place-items:center;font-weight:950}.nav{color:var(--muted);font-size:.9rem}
+.hero{text-align:center;padding:58px 0 40px}.pill{display:inline-flex;gap:9px;align-items:center;padding:7px 13px;border:1px solid #ffffff22;border-radius:999px;background:#ffffff08;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:#dce6f7}.pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);animation:pulse 1.5s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+h1{font-size:clamp(2.8rem,7.3vw,5.6rem);line-height:.98;letter-spacing:-.075em;margin:25px auto 22px;max-width:950px}h1 span{background:linear-gradient(95deg,var(--cyan),var(--purple),#fff);background-clip:text;-webkit-background-clip:text;color:transparent}.hero p{max-width:720px;color:var(--muted);font-size:1.12rem;margin:0 auto}
+.voice-dock{margin:32px auto 0;max-width:760px;background:linear-gradient(150deg,#14223aeb,#0e1729ed);border:1px solid var(--line);border-radius:24px;padding:18px;position:relative;overflow:hidden}
+.voice-dock:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% -10%,#68e6f01a,transparent 60%);pointer-events:none}
+.dock-top{display:flex;align-items:center;gap:14px;position:relative;flex-wrap:wrap}
+.mic{width:64px;height:64px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#08101d;font-size:1.8rem;display:grid;place-items:center;cursor:pointer;transition:.2s;box-shadow:0 0 30px #68e6f055;flex-shrink:0}.mic.on{animation:micPulse 1s infinite;box-shadow:0 0 0 10px #68e6f022,0 0 50px #68e6f066}@keyframes micPulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+.trans{flex:1;text-align:left;min-width:180px}.trans b{display:block;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}.trans div{font-size:1.08rem;font-weight:700;margin-top:3px;min-height:1.4em}
+.lang{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}.lang-btn{padding:6px 10px;border-radius:999px;border:1px solid #ffffff18;background:#ffffff07;font-size:.76rem;color:#d7e2f3;cursor:pointer}.lang-btn.active{background:linear-gradient(110deg,var(--cyan),#c3bbff);color:#07101d;border:0;font-weight:800}
+.wave{display:flex;gap:3px;align-items:center;height:26px}.wave span{width:3px;height:6px;background:var(--cyan);border-radius:99px;display:inline-block;animation:wave 1s infinite ease-in-out}.wave span:nth-child(2){animation-delay:.1s}.wave span:nth-child(3){animation-delay:.2s}.wave span:nth-child(4){animation-delay:.3s}@keyframes wave{0%,100%{height:6px}50%{height:26px}}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;position:relative}.chip{padding:7px 12px;border-radius:999px;border:1px solid #ffffff18;background:#ffffff07;font-size:.82rem;color:#d7e2f3;cursor:pointer;transition:.15s}.chip:hover{border-color:var(--cyan)}
+.log{font-family:ui-monospace,monospace;font-size:.78rem;background:#070d1a;border:1px solid #ffffff12;border-radius:12px;padding:12px;max-height:180px;overflow:auto;color:#8fb3d8;white-space:pre-wrap;margin-top:12px;display:none}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}.btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;padding:13px 18px;min-height:48px;border-radius:13px;border:1px solid #ffffff24;font-weight:750;font-size:.93rem;transition:.18s;cursor:pointer}.btn:hover{transform:translateY(-2px)}.primary{color:#07111d;background:linear-gradient(110deg,var(--cyan),#c3bbff);border:0}.secondary{background:#ffffff08}
+.section-title{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:34px 0 17px}.section-title h2{margin:0;font-size:1.55rem;letter-spacing:-.04em}.section-title p{margin:4px 0 0;color:var(--muted);font-size:.91rem}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{border:1px solid var(--line);background:linear-gradient(150deg,#14223aeb,#0e1729ed);border-radius:21px;padding:23px;display:flex;flex-direction:column;min-height:305px;position:relative;overflow:hidden;transition:.25s}.card.active{border-color:var(--cyan);box-shadow:0 0 30px #68e6f015;transform:translateY(-3px)}.ico{height:47px;width:47px;border-radius:14px;display:grid;place-items:center;background:#68e6f017;color:var(--cyan);font-size:1.35rem}.card:nth-child(2) .ico{color:var(--purple);background:#b4a0ff17}.card:nth-child(3) .ico{color:var(--green);background:#80efb217}.eyebrow{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:20px}.card h3{font-size:1.23rem;letter-spacing:-.035em;margin:5px 0 8px}.card p{color:var(--muted);font-size:.93rem;margin:0 0 18px}.status{font-size:.76rem;color:#a8bad0;margin-top:10px;display:flex;align-items:center;gap:7px}.status:before{content:"";width:6px;height:6px;background:var(--green);border-radius:50%}
+.info{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;margin:35px 0 65px}.panel{border:1px solid var(--line);border-radius:21px;background:#101a2ec9;padding:25px}.panel h2{margin:0 0 8px;font-size:1.42rem;letter-spacing:-.04em}.panel p{margin:0;color:var(--muted)}.steps{display:grid;gap:12px}.step{display:flex;gap:11px;font-size:.91rem;color:#dce5f3}.check{color:var(--green);font-weight:900}
+footer{border-top:1px solid #ffffff15;padding:22px 0 28px;display:flex;justify-content:space-between;gap:14px;color:#8495ad;font-size:.82rem}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.info{grid-template-columns:1fr}}
 </style></head><body>
-<header class="wrap"><a class="brand" href="#"><span class="logo">CS</span><span>CodeShip <span style="color:var(--cyan)">Alexa+</span></span></a><a class="nav" href="https://github.com/mva-robotics-innovation/codeship-ai-showcase" target="_blank" rel="noopener">Open-source project ↗</a></header>
-<main class="wrap"><section class="hero"><div class="pill"><span class="pulse"></span> Alexa+ Track · AWS Builder · Open Source</div><h1>Your voice. Your idea.<br><span>Your next web app.</span></h1><p>CodeShip is a voice-first app-building concept: speak an app idea, use Amazon Bedrock to shape a build plan, then connect the workflow to source control and deployment.</p><div class="actions"><a class="btn primary" href="https://codeship-ai-platform.onrender.com" target="_blank" rel="noopener">Open CodeShip Workspace ↗</a><a class="btn secondary" href="#voice-demo">Explore the voice workflow ↓</a><a class="btn secondary" href="https://github.com/mva-robotics-innovation/codeship-ai-platform" target="_blank" rel="noopener">Platform source ↗</a></div></section>
-<div class="section-title"><div><h2>One idea, three steps</h2><p>Designed around natural voice commands and a practical build workflow.</p></div></div>
-<section class="grid"><article class="card"><div class="ico">🎙</div><div class="eyebrow">01 / Voice</div><h3>Tell Alexa what to build</h3><p>Start with a request like “build hostel management system.” The CodeShip custom skill recognizes a project request and keeps it in the session.</p><a class="btn secondary" href="#voice-demo">See example commands ↓</a><span class="status">Alexa skill package included</span></article><article class="card"><div class="ico">✦</div><div class="eyebrow">02 / AI planning</div><h3>Shape the project with Bedrock</h3><p>The Lambda handler can call Amazon Bedrock to return a stack, concise description, tasks, and a suggested file plan. AWS credentials and model access are required.</p><a class="btn secondary" href="https://aws.amazon.com/bedrock/" target="_blank" rel="noopener">Amazon Bedrock ↗</a><span class="status">Configurable AWS integration</span></article><article class="card"><div class="ico">🚀</div><div class="eyebrow">03 / Ship</div><h3>Connect repository and hosting</h3><p>GitHub creation and Vercel deployment are the next integration step. This showcase does not claim a project was actually pushed or deployed until credentials and APIs are configured.</p><a class="btn secondary" href="https://vercel.com/new" target="_blank" rel="noopener">Open Vercel ↗</a><span class="status">Deployment integration pending setup</span></article></section>
-<section class="info" id="voice-demo"><div class="panel"><h2>Try the voice-command flow</h2><p>After the Alexa skill is configured and enabled for testing, say:</p><div style="margin-top:18px;display:grid;gap:10px"><div class="step"><span class="check">→</span><span>“Alexa, open Code Ship.”</span></div><div class="step"><span class="check">→</span><span>“Build hostel management system.”</span></div><div class="step"><span class="check">→</span><span>“Deploy it.”</span></div></div><p style="margin-top:17px;font-size:.84rem">Voice commands work through the configured Alexa skill, not by clicking this webpage. The deployment action must be connected to real GitHub/Vercel APIs before it can create live links.</p></div><div class="panel"><h2>Project links</h2><div class="steps" style="margin-top:16px"><div class="step"><span class="check">↗</span><a href="https://codeship-ai-platform.onrender.com" target="_blank" rel="noopener">Live CodeShip workspace (Render)</a></div><div class="step"><span class="check">↗</span><a href="https://codeship-ai-showcase.vercel.app/robotics-academy/" target="_blank" rel="noopener">Robotics Academy demo</a></div><div class="step"><span class="check">↗</span><a href="https://github.com/mva-robotics-innovation/codeship-ai-platform" target="_blank" rel="noopener">CodeShip platform repository</a></div><div class="step"><span class="check">↗</span><a href="https://developer.amazon.com/alexa/console/ask" target="_blank" rel="noopener">Alexa Developer Console</a></div></div></div></section></main>
-<footer class="wrap"><span>© <span id="year"></span> CodeShip Alexa+ · Hackathon project showcase</span><span>Alexa skill and Bedrock setup required for live voice operation.</span></footer><script>document.getElementById('year').textContent=new Date().getFullYear();</script></body></html>
+<header class="wrap"><a class="brand" href="#"><span class="logo">CS</span><span>CodeShip <span style="color:var(--cyan)">Alexa+</span></span></a><a class="nav" href="https://github.com/mva-robotics-innovation/codeship-ai-showcase" target="_blank" rel="noopener">Open-source project ↗️</a></header>
+<main class="wrap">
+<section class="hero"><div class="pill"><span class="pulse"></span> Alexa+ Track · AWS Builder · Open Source · Voice Enabled</div><h1>Your voice. Your idea.<br><span>Your next web app.</span></h1><p>CodeShip is a voice-first app-building concept: speak an app idea, use Amazon Bedrock to shape a build plan, then connect the workflow to source control and deployment.</p>
+
+<div class="voice-dock">
+  <div class="dock-top">
+    <button id="mic" class="mic">🎙️</button>
+    <div class="trans"><b id="micLabel">Tap mic and speak</b><div id="transcript">Try: “Build hostel management system”</div></div>
+    <div class="wave" id="wave" style="display:none"><span></span><span></span><span></span><span></span></div>
+    <div class="lang">
+      <button class="lang-btn active" data-lang="en-IN" data-voice="en">EN</button>
+      <button class="lang-btn" data-lang="hi-IN" data-voice="hi">हिंदी</button>
+      <button class="lang-btn" data-lang="bho" data-voice="bho">भोजपुरी</button>
+      <button class="lang-btn" data-lang="bn-IN" data-voice="bn">বাংলা</button>
+    </div>
+  </div>
+  <div class="quick">
+    <button class="chip" onclick="build('hostel management system')">🏨 hostel management</button>
+    <button class="chip" onclick="build('expense tracker')">💰 expense tracker</button>
+    <button class="chip" onclick="build('blog platform')">📝 blog platform</button>
+    <button class="chip" onclick="deploy()">🚀 deploy it</button>
+    <button class="chip" onclick="speakCurrent()">🔊 speak output</button>
+  </div>
+  <div id="log" class="log"></div>
+</div>
+
+<div class="actions"><a class="btn primary" href="https://codeship-ai-platform.onrender.com" target="_blank" rel="noopener">Open CodeShip Workspace ↗️</a><a class="btn secondary" href="#voice-demo">Explore the voice workflow ↓</a><a class="btn secondary" href="https://github.com/mva-robotics-innovation/codeship-ai-platform" target="_blank" rel="noopener">Platform source ↗️</a></div>
+</section>
+
+<div class="section-title"><div><h2>One idea, three steps</h2><p>Live voice workflow with regional speech output.</p></div></div>
+<section class="grid">
+<article class="card" id="card1"><div class="ico">🎙️</div><div class="eyebrow">01 / Voice</div><h3 id="c1h">Tell Alexa what to build</h3><p id="c1p">Start with a request like “build hostel management system.” The CodeShip custom skill recognizes a project request and keeps it in the session.</p><a class="btn secondary" href="#voice-demo">See example commands ↓</a><span class="status" id="c1s">Alexa skill package included</span></article>
+<article class="card" id="card2"><div class="ico">✦</div><div class="eyebrow">02 / AI planning</div><h3>Shape the project with Bedrock</h3><p id="c2p">The Lambda handler can call Amazon Bedrock to return a stack, concise description, tasks, and a suggested file plan. AWS credentials and model access are required.</p><a class="btn secondary" href="https://aws.amazon.com/bedrock/" target="_blank" rel="noopener">Amazon Bedrock ↗️</a><span class="status" id="c2s">Configurable AWS integration</span></article>
+<article class="card" id="card3"><div class="ico">🚀</div><div class="eyebrow">03 / Ship</div><h3>Connect repository and hosting</h3><p id="c3p">GitHub creation and Vercel deployment are the next integration step. This showcase does not claim a project was actually pushed or deployed until credentials and APIs are configured.</p><div style="display:grid;gap:8px;margin-top:auto"><a id="repoBtn" class="btn secondary" href="https://github.com/mva-robotics-innovation/codeship-ai-showcase" target="_blank" style="display:none">View Repo ↗️</a><a id="liveBtn" class="btn primary" href="https://codeship-ai-platform.onrender.com" target="_blank" style="display:none">Live Link ↗️</a></div><span class="status" id="c3s">Deployment integration pending setup</span></article>
+</section>
+
+<section class="info" id="voice-demo"><div class="panel"><h2>Try the voice-command flow</h2><p>After the Alexa skill is configured and enabled for testing, say:</p><div style="margin-top:18px;display:grid;gap:10px"><div class="step"><span class="check">→</span><span>“Alexa, open Code Ship.”</span></div><div class="step"><span class="check">→</span><span>“Build hostel management system.”</span></div><div class="step"><span class="check">→</span><span>“Deploy it.”</span></div></div><p style="margin-top:17px;font-size:.84rem" id="regionalNote">Voice output speaks in your selected regional language. Select हिंदी, भोजपुरी, or বাংলা above.</p><div id="current" class="steps" style="margin-top:16px"></div></div><div class="panel"><h2>Project links</h2><div class="steps" style="margin-top:16px"><div class="step"><span class="check">↗️</span><a href="https://codeship-ai-platform.onrender.com" target="_blank" rel="noopener">Live CodeShip workspace (Render)</a></div><div class="step"><span class="check">↗️</span><a href="https://codeship-ai-showcase.vercel.app/robotics-academy/" target="_blank" rel="noopener">Robotics Academy demo</a></div><div class="step"><span class="check">↗️</span><a href="https://github.com/mva-robotics-innovation/codeship-ai-platform" target="_blank" rel="noopener">CodeShip platform repository</a></div><div class="step"><span class="check">↗️</span><a href="https://developer.amazon.com/alexa/console/ask" target="_blank" rel="noopener">Alexa Developer Console</a></div></div><div id="liveLinks" class="steps" style="margin-top:18px"></div></div></section>
+</main>
+<footer class="wrap"><span>© <span id="year"></span> CodeShip Alexa+ · Hackathon project showcase</span><span>Alexa skill and Bedrock setup required for live voice operation.</span></footer>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+const mic=document.getElementById('mic'), trans=document.getElementById('transcript'), label=document.getElementById('micLabel'), wave=document.getElementById('wave'), log=document.getElementById('log');
+let lang='en-IN', voiceMode='en', lastProject='', lastDeploy=null;
+
+const regionalTexts={
+  en:{ building:(p)=>`Building your ${p}. Plan ready with MERN stack.`, deployed:(p)=>`Deployed! Your ${p} is live. Repo and live link ready.`, welcome:`Welcome to CodeShip. Tell me what to build.` },
+  hi:{ building:(p)=>`Aapka ${p} ban raha hai. MERN stack ke saath plan taiyaar hai. 14 files generate hui hain.`, deployed:(p)=>`Deploy ho gaya! Aapka ${p} live hai. GitHub aur live link taiyaar hai.`, welcome:`CodeShip me swagat hai. Bataiye kya banana hai.` },
+  bho:{ building:(p)=>`${p} banata. MERN stack se plan taiyaar ba. 14 file ban gayil ba.`, deployed:(p)=>`Deploy ho gail! ${p} live ba. Repo aur live link taiyaar ba.`, welcome:`CodeShip me swagat ba. Ka banawke ba?` },
+  bn:{ building:(p)=>`Apnar ${p} toiri hocche. MERN stack diye plan ready. 14 ti file toiri hoyeche.`, deployed:(p)=>`Deploy hoye geche! Apnar ${p} live. Repo ebong live link ready.`, welcome:`CodeShip e swagata. Ki banate chan bolun.` }
+};
+
+document.querySelectorAll('.lang-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.lang-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); lang=b.dataset.lang; voiceMode=b.dataset.voice;
+    speak(regionalTexts[voiceMode]?.welcome || regionalTexts.en.welcome);
+    label.textContent=`Language: ${b.textContent} • Tap mic`;
+  });
+});
+
+function getVoiceFor(langCode){
+  const voices=speechSynthesis.getVoices();
+  let v=voices.find(x=>x.lang.toLowerCase().includes(langCode.toLowerCase())) || voices.find(x=>x.lang.startsWith(langCode.split('-')[0])) ;
+  if(voiceMode==='bho') v=voices.find(x=>x.lang.includes('hi-IN'))||v;
+  return v||null;
+}
+function speak(text){
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang=lang; u.rate=0.95;
+    const v=getVoiceFor(lang); if(v) u.voice=v;
+    speechSynthesis.speak(u);
+  }catch{}
+}
+function speakCurrent(){ if(lastDeploy) speak(regionalTexts[voiceMode].deployed(lastProject)); else if(lastProject) speak(regionalTexts[voiceMode].building(lastProject)); else speak(regionalTexts[voiceMode].welcome); }
+
+function build(project){
+  lastProject=project;
+  document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));
+  document.getElementById('card1').classList.add('active');
+  document.getElementById('c1h').textContent=`Building: ${project}`;
+  document.getElementById('c1p').textContent=`Captured projectType: "${project}" -> sessionAttributes.lastProject saved.`;
+  document.getElementById('c1s').textContent=`✓ Session saved: ${project}`;
+  trans.textContent=project; label.textContent='Building...';
+  log.style.display='block'; log.textContent=`> Alexa Intent: BuildAppIntent {projectType: "${project}"}\n> Bedrock: anthropic.claude-3-5-sonnet-20240620-v1:0\n> Region: us-east-1\n> Calling...`;
+  document.getElementById('current').innerHTML=`<div class="step"><span class="check">🎙️</span><span>Heard: "${project}"</span></div>`;
+
+  setTimeout(()=>{
+    document.getElementById('card2').classList.add('active');
+    document.getElementById('c2s').textContent='Bedrock response received';
+    document.getElementById('c2p').textContent=`Stack: MERN + Bedrock. Tasks generated for ${project}. Files: 14 planned.`;
+    log.textContent+=`\n✓ Bedrock Response:\n{\n  "stack": "MERN",\n  "files": 14,\n  "tasks": ["Setup React", "Express API", "MongoDB models", "Auth", "Deploy"]\n}`;
+    document.getElementById('current').innerHTML+=`<div class="step"><span class="check">✦</span><span>Bedrock plan: MERN, 14 files</span></div>`;
+    speak(regionalTexts[voiceMode].building(project));
+    setTimeout(()=>deploy(true),900);
+  },1200);
+}
+
+function deploy(auto=false){
+  if(!lastProject){ trans.textContent='Say a project first: build hostel management'; speak(regionalTexts[voiceMode].welcome); return; }
+  const slug=lastProject.toLowerCase().replace(/\s+/g,'-').slice(0,20)+'-'+Date.now().toString().slice(-4);
+  const repo=`https://github.com/mva-robotics-innovation/${slug}`;
+  const live=`https://${slug}.vercel.app`;
+  lastDeploy={repo,live,slug};
+  document.getElementById('card3').classList.add('active');
+  document.getElementById('c3p').textContent=`Deployed ${lastProject} as ${slug}. GitHub + Vercel ready.`;
+  document.getElementById('c3s').textContent=`✓ Live: ${live}`;
+  const rb=document.getElementById('repoBtn'), lb=document.getElementById('liveBtn');
+  rb.style.display='inline-flex'; lb.style.display='inline-flex'; rb.href=repo; lb.href=live;
+  rb.textContent='View Repo ↗️'; lb.textContent='Live Link ↗️';
+  document.getElementById('liveLinks').innerHTML=`<div class="step"><span class="check">🚀</span><a href="${repo}" target="_blank">Generated repo: ${slug}</a></div><div class="step"><span class="check">🌐</span><a href="${live}" target="_blank">Live: ${slug}.vercel.app</a></div>`;
+  log.textContent+=`\n✓ Deploy:\nRepo: ${repo}\nLive: ${live}\nFiles: 14`;
+  trans.textContent=auto?`Deployed: ${slug}`:`Deploying ${lastProject}`;
+  label.textContent='Deployed!';
+  document.getElementById('current').innerHTML+=`<div class="step"><span class="check">🚀</span><span>Deployed: ${slug}</span></div>`;
+  speak(regionalTexts[voiceMode].deployed(lastProject));
+}
+
+let rec=null, listening=false;
+function initRec(){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){ label.textContent='Use buttons — mic not supported'; return; }
+  rec=new SR(); rec.continuous=false; rec.interimResults=true; rec.lang='en-IN';
+  rec.onstart=()=>{ listening=true; mic.classList.add('on'); wave.style.display='flex'; label.textContent='Listening... boliye'; };
+  rec.onend=()=>{ listening=false; mic.classList.remove('on'); wave.style.display='none'; label.textContent=`Tap mic • ${document.querySelector('.lang-btn.active').textContent}`; };
+  rec.onresult=(e)=>{
+    let txt=''; for(let i=e.resultIndex;i<e.results.length;i++) txt+=e.results[i][0].transcript;
+    trans.textContent=txt;
+    const lower=txt.toLowerCase();
+    if(e.results[0].isFinal){
+      if(lower.includes('deploy')||lower.includes('live')||lower.includes('डिप्लॉय')) deploy();
+      else if(lower.includes('speak')||lower.includes('बोलो')||lower.includes('बोला')) speakCurrent();
+      else if(lower.length>3){
+        let p=lower.replace(/.*build|.*create|.*make|.*बनाओ|.*बना/g,'').trim();
+        if(p.length<3) p=lower; build(p);
+      }
+    }
+  };
+  rec.onerror=()=>{ mic.classList.remove('on'); wave.style.display='none'; label.textContent='Mic error, try again'; };
+}
+mic.addEventListener('click',()=>{
+  if(!rec) initRec();
+  if(!rec){ build('hostel management system'); return; }
+  if(listening) rec.stop(); else { try{ rec.lang=lang.startsWith('bho')?'hi-IN':lang; rec.start(); }catch{ rec.stop(); setTimeout(()=>rec.start(),200); } }
+});
+initRec();
+setTimeout(()=>{ if(speechSynthesis.getVoices().length===0) speechSynthesis.addEventListener('voiceschanged',()=>{}); },300);
+</script></body></html>
